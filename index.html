@@ -1,0 +1,640 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Propuesta Web — Ana Torres | Private English Coaching</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400&family=Dancing+Script:wght@400;500;600&family=Inter:wght@300;400;500;600;700&display=swap');
+
+        :root {
+            --cream: #F5F1EA;
+            --charcoal: #1A1A1A;
+            --accent: #D95B28;
+            --text-muted: #6B6B6B;
+            --border: rgba(26, 26, 26, 0.08);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        @media print {
+            body {
+                -webkit-print-color-adjust: exact;
+                print-color-adjust: exact;
+            }
+
+            .page {
+                page-break-after: always;
+                break-after: page;
+            }
+
+            .page:last-child {
+                page-break-after: avoid;
+            }
+
+            .no-print {
+                display: none !important;
+            }
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, sans-serif;
+            color: var(--charcoal);
+            background: #fff;
+            line-height: 1.6;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        /* ── Cover Page ── */
+        .cover {
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            background: var(--cream);
+            padding: 4rem;
+            position: relative;
+        }
+
+        .cover__badge {
+            font-size: 0.7rem;
+            font-weight: 600;
+            letter-spacing: 0.2em;
+            text-transform: uppercase;
+            color: var(--text-muted);
+            margin-bottom: 2rem;
+            border: 1px solid var(--border);
+            padding: 0.5rem 1.5rem;
+        }
+
+        .cover h1 {
+            font-family: 'Playfair Display', serif;
+            font-size: 3.5rem;
+            font-weight: 500;
+            line-height: 1.15;
+            margin-bottom: 0.5rem;
+        }
+
+        .cover h1 span {
+            font-family: 'Dancing Script', cursive;
+            color: var(--accent);
+        }
+
+        .cover__subtitle {
+            font-size: 1.1rem;
+            color: var(--text-muted);
+            max-width: 500px;
+            margin-bottom: 3rem;
+        }
+
+        .cover__meta {
+            font-size: 0.8rem;
+            color: var(--text-muted);
+            position: absolute;
+            bottom: 3rem;
+        }
+
+        .cover__meta strong {
+            color: var(--charcoal);
+        }
+
+        /* ── Page Layout ── */
+        .page {
+            min-height: 100vh;
+            padding: 4rem;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .page:last-child {
+            padding-bottom: 5rem;
+        }
+
+        .page--dark {
+            background: var(--charcoal);
+            color: #F5F1EA;
+        }
+
+        .page__label {
+            font-size: 0.7rem;
+            font-weight: 600;
+            letter-spacing: 0.2em;
+            text-transform: uppercase;
+            color: var(--accent);
+            margin-bottom: 0.75rem;
+        }
+
+        .page h2 {
+            font-family: 'Playfair Display', serif;
+            font-size: 2.2rem;
+            font-weight: 500;
+            margin-bottom: 1rem;
+            line-height: 1.2;
+        }
+
+        .page h2 span {
+            font-family: 'Dancing Script', cursive;
+            color: var(--accent);
+        }
+
+        .page__desc {
+            font-size: 0.95rem;
+            color: var(--text-muted);
+            max-width: 600px;
+            margin-bottom: 2.5rem;
+            line-height: 1.8;
+        }
+
+        .page--dark .page__desc {
+            color: #A0A0A0;
+        }
+
+        /* ── Screenshots ── */
+        .screenshot {
+            flex: 1;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .screenshot img {
+            width: 100%;
+            max-width: 1000px;
+            border-radius: 8px;
+            box-shadow: 0 8px 40px rgba(0, 0, 0, 0.15);
+            border: 1px solid var(--border);
+        }
+
+        .screenshot--pair {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 2rem;
+            align-items: start;
+        }
+
+        .screenshot--pair img {
+            width: 100%;
+            border-radius: 8px;
+            box-shadow: 0 8px 40px rgba(0, 0, 0, 0.15);
+            border: 1px solid var(--border);
+        }
+
+        .page--dark .screenshot img {
+            box-shadow: 0 8px 40px rgba(0, 0, 0, 0.4);
+            border-color: rgba(255, 255, 255, 0.1);
+        }
+
+        /* ── Features Grid ── */
+        .features {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 2rem;
+            margin-bottom: 2.5rem;
+        }
+
+        .feature {
+            padding: 1.5rem;
+            border: 1px solid var(--border);
+        }
+
+        .feature__icon {
+            font-size: 1.5rem;
+            margin-bottom: 0.75rem;
+        }
+
+        .feature h4 {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.1rem;
+            margin-bottom: 0.4rem;
+        }
+
+        .feature p {
+            font-size: 0.8rem;
+            color: var(--text-muted);
+            line-height: 1.6;
+        }
+
+        /* ── Budget Table ── */
+        .budget-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-bottom: 2rem;
+        }
+
+        .budget-table th,
+        .budget-table td {
+            text-align: left;
+            padding: 1rem 1.5rem;
+            font-size: 0.9rem;
+        }
+
+        .budget-table thead th {
+            font-size: 0.7rem;
+            font-weight: 600;
+            letter-spacing: 0.15em;
+            text-transform: uppercase;
+            color: var(--text-muted);
+            border-bottom: 2px solid var(--charcoal);
+            padding-bottom: 0.75rem;
+        }
+
+        .budget-table tbody td {
+            border-bottom: 1px solid var(--border);
+        }
+
+        .budget-table tbody tr:last-child td {
+            border-bottom: none;
+        }
+
+        .budget-table .item-name {
+            font-weight: 600;
+        }
+
+        .budget-table .item-desc {
+            font-size: 0.8rem;
+            color: var(--text-muted);
+            margin-top: 0.2rem;
+        }
+
+        .budget-table .price {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.1rem;
+            text-align: right;
+            white-space: nowrap;
+        }
+
+        .budget-total {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1.5rem;
+            background: var(--charcoal);
+            color: var(--cream);
+        }
+
+        .budget-total__label {
+            font-size: 0.75rem;
+            font-weight: 600;
+            letter-spacing: 0.15em;
+            text-transform: uppercase;
+        }
+
+        .budget-total__price {
+            font-family: 'Playfair Display', serif;
+            font-size: 2rem;
+            font-weight: 500;
+        }
+
+        .budget-total__price span {
+            font-family: 'Inter', sans-serif;
+            font-size: 0.8rem;
+            color: #A0A0A0;
+            display: block;
+            text-align: right;
+        }
+
+        .budget-note {
+            font-size: 0.8rem;
+            color: var(--text-muted);
+            margin-top: 1.5rem;
+            line-height: 1.7;
+            max-width: 600px;
+        }
+
+        .budget-note strong {
+            color: var(--charcoal);
+        }
+
+        /* ── Hosting Info ── */
+        .hosting-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .hosting-card {
+            border: 1px solid rgba(245, 241, 234, 0.15);
+            padding: 2rem;
+        }
+
+        .hosting-card h4 {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.2rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .hosting-card p {
+            font-size: 0.85rem;
+            color: #A0A0A0;
+            line-height: 1.7;
+        }
+
+        .hosting-card .tag {
+            display: inline-block;
+            font-size: 0.65rem;
+            font-weight: 600;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+            padding: 0.3rem 0.8rem;
+            margin-top: 1rem;
+            border: 1px solid var(--accent);
+            color: var(--accent);
+        }
+
+        /* ── Print Button ── */
+        .print-btn {
+            position: fixed;
+            bottom: 2rem;
+            right: 2rem;
+            background: var(--accent);
+            color: white;
+            border: none;
+            padding: 0.8rem 1.5rem;
+            font-size: 0.8rem;
+            font-weight: 600;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+            cursor: pointer;
+            z-index: 100;
+            font-family: 'Inter', sans-serif;
+            box-shadow: 0 4px 20px rgba(217, 91, 40, 0.3);
+            transition: transform 0.2s, box-shadow 0.2s;
+        }
+
+        .print-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 25px rgba(217, 91, 40, 0.4);
+        }
+
+        @media (max-width: 768px) {
+            .screenshot--pair {
+                grid-template-columns: 1fr;
+            }
+
+            .page {
+                padding: 2.5rem 1.5rem;
+            }
+
+            .cover {
+                padding: 3rem 1.5rem;
+            }
+
+            .cover h1 {
+                font-size: 2.5rem;
+            }
+
+            .page h2 {
+                font-size: 1.6rem;
+            }
+
+            .features {
+                grid-template-columns: 1fr;
+                gap: 1rem;
+            }
+
+            .hosting-grid {
+                grid-template-columns: 1fr;
+                gap: 1rem;
+            }
+
+            .budget-total {
+                flex-direction: column;
+                gap: 0.75rem;
+                text-align: center;
+            }
+
+            .budget-total__price span {
+                text-align: center;
+            }
+
+            .budget-table th,
+            .budget-table td {
+                padding: 0.75rem 0.5rem;
+                font-size: 0.8rem;
+            }
+
+            .print-btn {
+                bottom: 1rem;
+                right: 1rem;
+                padding: 0.6rem 1rem;
+                font-size: 0.7rem;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- Print Button -->
+    <button class="print-btn no-print" onclick="window.print()">Guardar como PDF ↓</button>
+
+    <!-- ═══════════ PAGE 1: Cover ═══════════ -->
+    <div class="page cover">
+        <div class="cover__badge">Propuesta de Diseño Web</div>
+        <h1>Ana <span>Torres</span></h1>
+        <h1 style="font-size: 1.4rem; color: var(--text-muted); font-weight: 400; margin-bottom: 1rem;">Private English
+            Coaching</h1>
+        <p class="cover__subtitle">
+            Diseño y desarrollo de página web profesional con blog integrado
+            para clases de inglés personalizadas.
+        </p>
+        <p class="cover__meta">
+            Febrero 2025 · <strong>Presupuesto personalizado</strong>
+        </p>
+    </div>
+
+    <!-- ═══════════ PAGE 2: Hero Preview ═══════════ -->
+    <div class="page">
+        <p class="page__label">01 — Landing Page</p>
+        <h2>First <span>impression</span></h2>
+        <p class="page__desc">
+            Hero section con diseño split-screen que combina un mensaje directo y potente
+            con una estética visual premium. Navegación limpia con acceso a todas las secciones.
+        </p>
+        <div class="screenshot">
+            <img src="assets/screenshots/hero.png" alt="Hero Section">
+        </div>
+    </div>
+
+    <!-- ═══════════ PAGE 3: Methodology ═══════════ -->
+    <div class="page" style="background: var(--cream);">
+        <p class="page__label">02 — Metodología</p>
+        <h2>Your unique <span>approach</span></h2>
+        <p class="page__desc">
+            Sección que comunica tu método de enseñanza en 3 pasos claros y memorables.
+            Cada paso incluye descripción en inglés y español para alcance bilingüe.
+        </p>
+        <div class="screenshot">
+            <img src="assets/screenshots/methodology.png" alt="Methodology Section">
+        </div>
+    </div>
+
+    <!-- ═══════════ PAGE 4: Services ═══════════ -->
+    <div class="page">
+        <p class="page__label">03 — Servicios y Precios</p>
+        <h2>Clear <span>value</span></h2>
+        <p class="page__desc">
+            Tres paquetes de servicios presentados como tarjetas elegantes sobre fondo oscuro.
+            Precios claros, características destacadas y call-to-action directo.
+        </p>
+        <div class="screenshot">
+            <img src="assets/screenshots/services.png" alt="Services Section">
+        </div>
+    </div>
+
+    <!-- ═══════════ PAGE 5: Blog + Admin ═══════════ -->
+    <div class="page" style="background: var(--cream);">
+        <p class="page__label">04 — Blog con Panel de Administración</p>
+        <h2>Your own <span>blog</span></h2>
+        <p class="page__desc">
+            Blog integrado donde puedes publicar artículos, tips y recursos para tus alumnos.
+            Panel de administración privado y sencillo para gestionar todo tu contenido.
+        </p>
+        <div class="screenshot screenshot--pair">
+            <img src="assets/screenshots/blog.png" alt="Blog Page">
+            <img src="assets/screenshots/admin.png" alt="Admin Panel">
+        </div>
+    </div>
+
+    <!-- ═══════════ PAGE 6: Features ═══════════ -->
+    <div class="page page--dark">
+        <p class="page__label">05 — Características incluidas</p>
+        <h2>Everything you <span>need</span></h2>
+        <p class="page__desc">
+            Tu web viene lista con todo lo necesario para una presencia online profesional.
+        </p>
+        <div class="features" style="margin-top: auto;">
+            <div class="feature" style="border-color: rgba(245,241,234,0.12);">
+                <div class="feature__icon">📱</div>
+                <h4>Responsive</h4>
+                <p>Diseño adaptable a móvil, tablet y desktop. Tu web se ve perfecta en cualquier dispositivo.</p>
+            </div>
+            <div class="feature" style="border-color: rgba(245,241,234,0.12);">
+                <div class="feature__icon">⚡</div>
+                <h4>Rendimiento</h4>
+                <p>Carga ultra-rápida sin frameworks pesados. HTML, CSS y JavaScript puros.</p>
+            </div>
+            <div class="feature" style="border-color: rgba(245,241,234,0.12);">
+                <div class="feature__icon">🔍</div>
+                <h4>SEO Optimizado</h4>
+                <p>Meta tags, estructura semántica y contenido optimizado para buscadores.</p>
+            </div>
+            <div class="feature" style="border-color: rgba(245,241,234,0.12);">
+                <div class="feature__icon">📝</div>
+                <h4>Blog CMS</h4>
+                <p>Panel de administración intuitivo para publicar y gestionar posts sin saber programar.</p>
+            </div>
+            <div class="feature" style="border-color: rgba(245,241,234,0.12);">
+                <div class="feature__icon">🌍</div>
+                <h4>Bilingüe</h4>
+                <p>Contenido principal en inglés con toques en español para máximo alcance.</p>
+            </div>
+            <div class="feature" style="border-color: rgba(245,241,234,0.12);">
+                <div class="feature__icon">✨</div>
+                <h4>Animaciones</h4>
+                <p>Transiciones y efectos suaves que dan vida a la experiencia del visitante.</p>
+            </div>
+        </div>
+
+        <div class="hosting-grid">
+            <div class="hosting-card">
+                <h4>Hosting</h4>
+                <p>Alojamiento en GitHub Pages — gratuito, rápido y fiable. Sin coste mensual de servidor.</p>
+                <div class="tag">Gratis</div>
+            </div>
+            <div class="hosting-card">
+                <h4>Dominio</h4>
+                <p>Registro de dominio personalizado (.com) por un año. Se renueva anualmente.</p>
+                <div class="tag">~50 AED/año</div>
+            </div>
+        </div>
+    </div>
+
+    <!-- ═══════════ PAGE 7: Budget ═══════════ -->
+    <div class="page">
+        <p class="page__label">06 — Presupuesto</p>
+        <h2>Investment <span>breakdown</span></h2>
+        <p class="page__desc">
+            Desglose detallado del proyecto. Pago único por el desarrollo completo,
+            sin costes recurrentes de hosting.
+        </p>
+
+        <table class="budget-table">
+            <thead>
+                <tr>
+                    <th>Concepto</th>
+                    <th class="price">Precio</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>
+                        <div class="item-name">Diseño de Landing Page</div>
+                        <div class="item-desc">Hero, metodología, servicios, CTA, footer · Diseño responsive ·
+                            Animaciones</div>
+                    </td>
+                    <td class="price">1,500 AED</td>
+                </tr>
+                <tr>
+                    <td>
+                        <div class="item-name">Blog con CMS</div>
+                        <div class="item-desc">Página de blog · Panel de administración · Editor de contenido · Gestión
+                            de imágenes</div>
+                    </td>
+                    <td class="price">1,800 AED</td>
+                </tr>
+                <tr>
+                    <td>
+                        <div class="item-name">SEO & Optimización</div>
+                        <div class="item-desc">Meta tags · Estructura semántica · Open Graph · Rendimiento</div>
+                    </td>
+                    <td class="price">500 AED</td>
+                </tr>
+                <tr>
+                    <td>
+                        <div class="item-name">Setup & Deployment</div>
+                        <div class="item-desc">Configuración de hosting · Dominio · SSL · Blog CMS setup · Formación de
+                            uso</div>
+                    </td>
+                    <td class="price">500 AED</td>
+                </tr>
+                <tr>
+                    <td>
+                        <div class="item-name" style="color: var(--accent);">Descuento especial</div>
+                        <div class="item-desc">Precio preferente</div>
+                    </td>
+                    <td class="price" style="color: var(--accent);">-1,000 AED</td>
+                </tr>
+            </tbody>
+        </table>
+
+        <div class="budget-total">
+            <div class="budget-total__label">Total del proyecto</div>
+            <div class="budget-total__price">
+                3,300 AED
+                <span>≈ 900 USD · Pago único</span>
+            </div>
+        </div>
+
+        <p class="budget-note">
+            <strong>Incluye:</strong> Diseño completo, desarrollo, blog funcional, configuración de
+            hosting y dominio, y sesión de formación para gestionar el blog.
+            <br><br>
+            <strong>No incluye:</strong> Creación de contenido (textos y fotografías), registro de dominio
+            (≈50 AED/año), y mantenimiento posterior (disponible bajo acuerdo aparte).
+            <br><br>
+            <strong>Plazo de entrega:</strong> 5–7 días laborables desde la aprobación.
+        </p>
+    </div>
+
+</body>
+
+</html>
